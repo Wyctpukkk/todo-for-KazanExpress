@@ -2,6 +2,15 @@ header {
   display: flex;
   justify-content: center;
   position: relative;
-  /* top: 50px; */
-  font-size: 3rem;
+  top: 50px;
+  font-size: 5vw;
+}
+.btn-edit {
+  transform: scale(0.5);
+  position: relative;
+  left: -5px;
+  cursor: pointer;
+}
+.btn-edit:hover {
+  background-color: rgba(0, 0, 0, 0.3);
 }
