@@ -33,6 +33,9 @@ header {
   color: #112d49;
   width: 50vw;
 }
+.todoList.active {
+  background-color: lightblue;
+}
 .icons {
   display: flex;
   position: relative;
