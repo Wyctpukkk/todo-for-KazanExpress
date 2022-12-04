@@ -5,6 +5,7 @@ header {
   top: 50px;
   font-size: 5vw;
 }
+
 .btn-edit {
   transform: scale(0.5);
   position: relative;
@@ -13,4 +14,28 @@ header {
 }
 .btn-edit:hover {
   background-color: rgba(0, 0, 0, 0.3);
+}
+.main-input {
+  width: 50vw;
+}
+.div-input {
+  display: flex;
+  left: 21vw;
+  top: 70px;
+  position: relative;
+}
+.todoList {
+  display: flex;
+  position: relative;
+  top: 80px;
+  left: 21vw;
+  background-color: white;
+  color: #112d49;
+  width: 50vw;
+}
+.icons {
+  display: flex;
+  position: relative;
+  top: 60px;
+  left: 71vw;
 }
