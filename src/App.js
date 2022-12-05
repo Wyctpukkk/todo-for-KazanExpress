@@ -1,15 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import FormChangeName from './components/FormChangeName';
 import ModalChangeNameList from './components/ModalChangeNameList';
 import { AiOutlineEdit, AiOutlineCheck, AiFillDelete } from 'react-icons/ai';
 
 function App() {
-  const [nameOfMain, setNameOfMain] = useState('Todo KazanExpress');
+  const [nameOfMain, setNameOfMain] = useState(
+    JSON.parse(sessionStorage.getItem('mainName'))
+      ? JSON.parse(sessionStorage.getItem('mainName'))
+      : 'Todo KazanExpress'
+  );
   const [inputName, setInputName] = useState('');
   const [show, setShow] = useState(false); // Show modal window
   const [newTodo, setNewTodo] = useState(''); // input add todo in list
-  const [todos, setTodos] = useState([]); // list todo
+  const [todos, setTodos] = useState(
+    JSON.parse(sessionStorage.getItem('posts'))
+      ? JSON.parse(sessionStorage.getItem('posts'))
+      : []
+  ); // list todo
 
   function deleteTodo(currentTodoList) {
     setTodos(todos.filter((todoList) => todoList.id !== currentTodoList.id));
@@ -24,6 +32,12 @@ function App() {
       })
     );
   }
+
+  useEffect(() => {
+    sessionStorage.setItem('posts', JSON.stringify(todos));
+    sessionStorage.setItem('mainName', JSON.stringify(nameOfMain));
+    console.log(JSON.parse(sessionStorage.getItem('mainName')));
+  }, [addNewTodo, changeInputName]);
 
   function addNewTodo() {
     const todoList = {
