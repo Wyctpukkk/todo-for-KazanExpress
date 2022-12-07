@@ -1,44 +1,85 @@
+.App {
+  max-width: 600px;
+  text-align: center;
+  margin: 0 auto;
+}
+
 header {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  top: 50px;
-  font-size: 5vw;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
 }
 
 .btn-edit {
   transform: scale(0.5);
   position: relative;
-  left: -5px;
   cursor: pointer;
 }
 .btn-edit:hover {
+  cursor: pointer;
   background-color: rgba(0, 0, 0, 0.3);
 }
-.main-input {
-  width: 50vw;
-}
+
 .div-input {
-  display: flex;
-  left: 21vw;
-  top: 70px;
-  position: relative;
 }
+
+.btn-add {
+  border: 2px solid #555;
+  padding: 10px 5px;
+  margin-left: 2px;
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.main-input {
+  width: 45%;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border: 2px solid #555;
+  border-radius: 5px;
+}
+
 .todoList {
   display: flex;
-  position: relative;
-  top: 80px;
-  left: 21vw;
+  align-items: center;
+  padding: 10px 20px;
+  margin: 5px 70px 0px 70px;
+
+  border-radius: 5px;
+  border: 2px solid #555;
   background-color: white;
   color: #112d49;
-  width: 50vw;
 }
+.todoListText {
+  width: 100%;
+  text-align: left;
+}
+
 .todoList.active {
-  background-color: lightblue;
+  background-color: unset;
+  color: gray;
 }
-.icons {
-  display: flex;
-  position: relative;
-  top: 60px;
-  left: 71vw;
+
+.todoList.active .icon-check {
+  color: gray;
+}
+
+.icon-check:hover {
+  cursor: pointer;
+  color: green;
+}
+.icon-delete:hover {
+  cursor: pointer;
+  color: rgb(150, 1, 1);
+}
+
+.contacts {
+}
+.btn-contacts {
+  transform: scale(2);
+  background-color: unset;
+  border: 0px;
+  margin: 10px;
+  padding: 1px;
+  color: white;
 }

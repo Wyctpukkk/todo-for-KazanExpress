@@ -2,7 +2,13 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import FormChangeName from './components/FormChangeName';
 import ModalChangeNameList from './components/ModalChangeNameList';
-import { AiOutlineEdit, AiOutlineCheck, AiFillDelete } from 'react-icons/ai';
+import {
+  AiOutlineEdit,
+  AiOutlineCheck,
+  AiFillDelete,
+  AiOutlineGithub,
+} from 'react-icons/ai';
+import { FaTelegramPlane } from 'react-icons/fa';
 
 function App() {
   const [nameOfMain, setNameOfMain] = useState(
@@ -36,8 +42,7 @@ function App() {
   useEffect(() => {
     sessionStorage.setItem('posts', JSON.stringify(todos));
     sessionStorage.setItem('mainName', JSON.stringify(nameOfMain));
-    console.log(JSON.parse(sessionStorage.getItem('mainName')));
-  }, [addNewTodo, changeInputName]);
+  }, [addNewTodo]);
 
   function addNewTodo() {
     const todoList = {
@@ -66,7 +71,6 @@ function App() {
           onClick={() => setShow(true)}
         />
       </header>
-
       <div>
         <ModalChangeNameList show={show} setShow={setShow}>
           <FormChangeName
@@ -76,7 +80,6 @@ function App() {
           />
         </ModalChangeNameList>
       </div>
-
       <div className="div-input">
         <input
           className="main-input"
@@ -84,26 +87,58 @@ function App() {
           value={newTodo}
           onChange={(e) => setNewTodo(e.target.value)}
         ></input>
-        <button onClick={addNewTodo}>Add</button>
+        <button className="btn-add" onClick={addNewTodo}>
+          Add
+        </button>
       </div>
       <div>
         {todos.length < 1 ? (
           <div>For create todo push Add </div>
         ) : (
           todos.map((todoList, index) => (
-            <div key={todoList.id}>
-              <div
-                className={todoList.isDone ? 'todoList active' : 'todoList'}
-              >{`${index + 1}. ${todoList.newTodo} `}</div>
-              <div className="icons">
-                <AiOutlineCheck onClick={() => checked(todoList)} />
-                <AiOutlineEdit />
-                <AiFillDelete onClick={() => deleteTodo(todoList)} />
+            <div
+              key={todoList.id}
+              className={todoList.isDone ? 'todoList active' : 'todoList'}
+            >
+              <div className="todoListText">
+                {`${index + 1}. ${todoList.newTodo} `}
               </div>
+              <AiOutlineCheck
+                className="icon-check"
+                onClick={() => checked(todoList)}
+              />
+              {/* <AiOutlineEdit onClick={() => setShow(true)} /> */}
+              <AiFillDelete
+                className="icon-delete"
+                onClick={() => deleteTodo(todoList)}
+              />
             </div>
           ))
         )}
       </div>
+      {todos.length > 0 ? (
+        <div className="contacts">
+          <p>Created by Wyctpukkk</p>
+          <a href="https://github.com/Wyctpukkk">
+            <button className="btn-contacts">
+              <AiOutlineGithub />
+            </button>
+          </a>
+          <a href="https://t.me/wyctpukkk">
+            <button className="btn-contacts">
+              <FaTelegramPlane />
+            </button>
+          </a>
+        </div>
+      ) : (
+        ''
+      )}
+
+      {todos.filter((todoList) => todoList.isDone !== false).length < 1
+        ? ''
+        : `You have done ${
+            todos.filter((todoList) => todoList.isDone !== false).length
+          } todos`}
     </div>
   );
 }
